@@ -25,9 +25,11 @@ const Header = () => {
   }, []);
 
   const navLinks = [
+    { href: '#about', label: 'About Us' },
     { href: '#why-us', label: 'Why Us' },
     { href: '#reviews', label: 'Reviews' },
     { href: '#faq', label: 'FAQ' },
+    { href: '#contact', label: 'Contact Us' },
   ];
 
   return (
