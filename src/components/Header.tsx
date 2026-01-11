@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 const services = [
   { label: 'Plumbing & Drains', href: '#services' },
@@ -20,6 +14,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,25 +50,33 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {/* Services Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors outline-none">
+            {/* Services Dropdown - Hover triggered */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors outline-none">
                 Services
-                <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                {services.map((service) => (
-                  <DropdownMenuItem key={service.label} asChild>
-                    <a
-                      href={service.href}
-                      className="cursor-pointer"
-                    >
-                      {service.label}
-                    </a>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isServicesOpen && (
+                <div className="absolute top-full left-0 pt-2">
+                  <div className="w-56 bg-white rounded-lg shadow-lg border border-border py-2 z-50">
+                    {services.map((service) => (
+                      <a
+                        key={service.label}
+                        href={service.href}
+                        className="block px-4 py-2 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+                      >
+                        {service.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {navLinks.map((link) => (
               <a
