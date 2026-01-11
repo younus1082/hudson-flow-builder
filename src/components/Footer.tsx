@@ -1,8 +1,9 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  // Note: FAQ section is now a separate component, this footer uses id="contact"
   return (
-    <footer id="faq" className="bg-foreground text-white py-16">
+    <footer id="contact" className="bg-foreground text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
