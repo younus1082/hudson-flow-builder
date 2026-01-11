@@ -4,6 +4,7 @@ import TrustBar from '@/components/TrustBar';
 import ServicesGrid from '@/components/ServicesGrid';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Testimonials from '@/components/Testimonials';
+import FAQ from '@/components/FAQ';
 import QuoteForm from '@/components/QuoteForm';
 import Footer from '@/components/Footer';
 import MobileStickyBar from '@/components/MobileStickyBar';
@@ -18,6 +19,7 @@ const Index = () => {
         <ServicesGrid />
         <WhyChooseUs />
         <Testimonials />
+        <FAQ />
         <QuoteForm />
       </main>
       <Footer />
