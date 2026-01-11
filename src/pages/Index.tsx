@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import TrustBar from '@/components/TrustBar';
+import AboutUs from '@/components/AboutUs';
 import ServicesGrid from '@/components/ServicesGrid';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Testimonials from '@/components/Testimonials';
@@ -16,6 +17,7 @@ const Index = () => {
       <main>
         <Hero />
         <TrustBar />
+        <AboutUs />
         <ServicesGrid />
         <WhyChooseUs />
         <Testimonials />
