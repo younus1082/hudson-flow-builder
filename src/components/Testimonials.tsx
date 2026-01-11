@@ -1,7 +1,8 @@
-import { useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { Star, Quote } from 'lucide-react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const testimonials = [
   {
@@ -9,30 +10,40 @@ const testimonials = [
     author: 'Sarah M.',
     location: 'Manhattan',
     rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face',
+    initials: 'SM',
   },
   {
     quote: "Professional, polite, and the price was exactly what they quoted. Finally, a plumber I can trust. They've earned a customer for life.",
     author: 'Mike T.',
     location: 'Brooklyn',
     rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    initials: 'MT',
   },
   {
     quote: "Our water heater died on the coldest day of the year. They installed a new tankless system the same day. Outstanding service!",
     author: 'Jennifer L.',
     location: 'Queens',
     rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
+    initials: 'JL',
   },
   {
     quote: "Fast, friendly, and fairly priced. They fixed a leak that two other plumbers couldn't figure out. True experts!",
     author: 'David R.',
     location: 'Upper West Side',
     rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
+    initials: 'DR',
   },
   {
     quote: "The team was incredibly respectful of our home. They even cleaned up better than they found it. Will definitely call again.",
     author: 'Lisa K.',
     location: 'SoHo',
     rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
+    initials: 'LK',
   },
 ];
 
@@ -80,9 +91,17 @@ const Testimonials = () => {
                     <p className="text-foreground mb-6 leading-relaxed">
                       "{testimonial.quote}"
                     </p>
-                    <div className="border-t border-border pt-4">
-                      <p className="font-semibold text-foreground">{testimonial.author}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                    <div className="border-t border-border pt-4 flex items-center gap-3">
+                      <Avatar className="w-12 h-12 border-2 border-primary/20">
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.author} />
+                        <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
+                          {testimonial.initials}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold text-foreground">{testimonial.author}</p>
+                        <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
