@@ -1,9 +1,25 @@
 import { useState, useEffect } from 'react';
-import { Phone, Menu, X } from 'lucide-react';
+import { Phone, Menu, X, ChevronDown } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+
+const services = [
+  { label: 'Plumbing & Drains', href: '#services' },
+  { label: 'Heating & Cooling', href: '#services' },
+  { label: 'Home Improvement', href: '#services' },
+  { label: 'Water Heater & Boilers', href: '#services' },
+  { label: 'Leaks & Pipes', href: '#services' },
+  { label: 'Sewer Line & Excavation', href: '#services' },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,7 +30,6 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: '#services', label: 'Services' },
     { href: '#why-us', label: 'Why Us' },
     { href: '#reviews', label: 'Reviews' },
     { href: '#faq', label: 'FAQ' },
@@ -40,6 +55,26 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
+            {/* Services Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors outline-none">
+                Services
+                <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56">
+                {services.map((service) => (
+                  <DropdownMenuItem key={service.label} asChild>
+                    <a
+                      href={service.href}
+                      className="cursor-pointer"
+                    >
+                      {service.label}
+                    </a>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -82,6 +117,31 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden pb-4 border-t border-border">
             <nav className="flex flex-col gap-2 pt-4">
+              {/* Mobile Services Accordion */}
+              <div>
+                <button
+                  onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                  className="w-full flex items-center justify-between py-2 px-4 text-foreground hover:bg-muted rounded-lg transition-colors"
+                >
+                  Services
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isMobileServicesOpen && (
+                  <div className="ml-4 mt-1 space-y-1">
+                    {services.map((service) => (
+                      <a
+                        key={service.label}
+                        href={service.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block py-2 px-4 text-sm text-muted-foreground hover:bg-muted rounded-lg transition-colors"
+                      >
+                        {service.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {navLinks.map((link) => (
                 <a
                   key={link.href}
