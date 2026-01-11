@@ -1,7 +1,10 @@
-import { Wrench, Flame, Droplets } from 'lucide-react';
+import { Wrench, Flame, Droplets, Thermometer, Home, Construction } from 'lucide-react';
 import serviceEmergency from '@/assets/service-emergency.jpg';
 import serviceWaterHeater from '@/assets/service-water-heater.jpg';
 import serviceDrain from '@/assets/service-drain.jpg';
+import serviceHvac from '@/assets/service-hvac.jpg';
+import serviceRenovation from '@/assets/service-renovation.jpg';
+import serviceSewer from '@/assets/service-sewer.jpg';
 
 const services = [
   {
@@ -24,6 +27,27 @@ const services = [
     title: 'Drain Cleaning',
     description: 'Hydro-jetting and advanced clog removal to keep your drains flowing freely.',
     features: ['Hydro-Jetting', 'Clog Removal', 'Camera Inspection'],
+  },
+  {
+    icon: Thermometer,
+    image: serviceHvac,
+    title: 'Heating & Cooling',
+    description: 'Complete HVAC services to keep your home comfortable year-round.',
+    features: ['AC Installation', 'Furnace Repair', 'Ductwork Services'],
+  },
+  {
+    icon: Home,
+    image: serviceRenovation,
+    title: 'Home Improvement',
+    description: 'Bathroom and kitchen remodeling with expert plumbing and fixture installation.',
+    features: ['Bathroom Remodel', 'Kitchen Upgrades', 'Fixture Installation'],
+  },
+  {
+    icon: Construction,
+    image: serviceSewer,
+    title: 'Sewer & Excavation',
+    description: 'Professional sewer line repair, replacement, and excavation services.',
+    features: ['Sewer Line Repair', 'Trenchless Technology', 'Pipe Replacement'],
   },
 ];
 
